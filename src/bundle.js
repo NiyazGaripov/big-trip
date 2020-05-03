@@ -326,3 +326,7 @@ const createTripEventsItemComponent = () => {
     </li>`
   );
 };
+
+const renderComponent = (container, component, place = `beforeend`) => {
+  container.insertAdjacentHTML(place, component);
+};
