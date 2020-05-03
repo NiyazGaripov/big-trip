@@ -1,0 +1,1 @@
+const TRIP_EVENT_COUNT = 3;
