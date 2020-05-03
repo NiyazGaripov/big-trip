@@ -281,3 +281,9 @@ const createTripItemComponent = () => {
     </li>`
   );
 };
+
+const createTripEventsListComponent = () => {
+  return (
+    `<ul class="trip-events__list"></ul>`
+  );
+};
