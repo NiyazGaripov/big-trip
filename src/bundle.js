@@ -330,3 +330,21 @@ const createTripEventsItemComponent = () => {
 const renderComponent = (container, component, place = `beforeend`) => {
   container.insertAdjacentHTML(place, component);
 };
+
+renderComponent(tripMain, createTripInfoComponent(), `afterbegin`);
+renderComponent(tripMainControls, createNavMenuComponent());
+renderComponent(tripMainControls, createFilterComponent());
+renderComponent(tripEvents, createSortComponent());
+renderComponent(tripEvents, createEventFormComponent());
+renderComponent(tripEvents, createTripListComponent());
+
+const tripDays = tripEvents.querySelector(`.trip-days`);
+renderComponent(tripDays, createTripItemComponent());
+
+const tripDay = tripEvents.querySelector(`.trip-days__item`);
+renderComponent(tripDay, createTripEventsListComponent());
+
+const tripEventsList = tripEvents.querySelector(`.trip-events__list`);
+for (let i = 0; i < TRIP_EVENT_COUNT; i++) {
+  renderComponent(tripEventsList, createTripEventsItemComponent());
+};
