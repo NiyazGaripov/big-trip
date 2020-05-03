@@ -264,3 +264,9 @@ const createEventFormComponent = () => {
     </form>`
   );
 };
+
+const createTripListComponent = () => {
+  return (
+    `<ul class="trip-days"></ul>`
+  );
+};
