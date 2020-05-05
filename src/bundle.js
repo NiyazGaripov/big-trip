@@ -347,4 +347,4 @@ renderComponent(tripDay, createTripEventsListComponent());
 const tripEventsList = tripEvents.querySelector(`.trip-events__list`);
 for (let i = 0; i < TRIP_EVENT_COUNT; i++) {
   renderComponent(tripEventsList, createTripEventsItemComponent());
-};
+}
