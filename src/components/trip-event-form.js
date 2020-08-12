@@ -1,12 +1,20 @@
+const createEventTypeItemMarkup = () => {
+  return (
+    `<div class="event__type-item">
+      <input id="event-type-taxi-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="taxi">
+      <label class="event__type-label  event__type-label--taxi" for="event-type-taxi-1">Taxi</label>
+    </div>`
+  );
+};
+
 const createEventTypeGroupMarkup = () => {
+  const eventTypeItemMarkup = createEventTypeItemMarkup();
+
   return (
     `<fieldset class="event__type-group">
       <legend class="visually-hidden">Transfer</legend>
 
-      <div class="event__type-item">
-        <input id="event-type-taxi-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="taxi">
-        <label class="event__type-label  event__type-label--taxi" for="event-type-taxi-1">Taxi</label>
-      </div>
+      ${eventTypeItemMarkup}
 
       <div class="event__type-item">
         <input id="event-type-bus-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="bus">
