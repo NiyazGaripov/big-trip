@@ -1,16 +1,16 @@
 const TRANSFERS = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`];
 
-const createEventTypeItemMarkup = () => {
+const createEventTypeItemMarkup = (item) => {
   return (
     `<div class="event__type-item">
-      <input id="event-type-taxi-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="taxi">
-      <label class="event__type-label  event__type-label--taxi" for="event-type-taxi-1">Taxi</label>
+      <input id="event-type-${item}-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="${item}">
+      <label class="event__type-label  event__type-label--${item}" for="event-type-${item}-1">${item}</label>
     </div>`
   );
 };
 
 const createEventTypeGroupMarkup = () => {
-  const eventTypeItemMarkup = createEventTypeItemMarkup();
+  const eventTypeItemMarkup = createEventTypeItemMarkup(`taxi`);
 
   return (
     `<fieldset class="event__type-group">
