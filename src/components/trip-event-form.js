@@ -1,3 +1,5 @@
+const TRANSFERS = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`];
+
 const createEventTypeItemMarkup = () => {
   return (
     `<div class="event__type-item">
