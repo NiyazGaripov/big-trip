@@ -25,7 +25,7 @@ const createEventTypeGroupMarkup = (list, title) => {
 };
 
 export const createTripEventFormComponent = () => {
-  const eventTypeGroupMarkup = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
+  const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
 
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
@@ -38,7 +38,7 @@ export const createTripEventFormComponent = () => {
           <input class="event__type-toggle  visually-hidden" id="event-type-toggle-1" type="checkbox">
 
           <div class="event__type-list">
-            ${eventTypeGroupMarkup}
+            ${eventTypeTransfers}
 
             <fieldset class="event__type-group">
               <legend class="visually-hidden">Activity</legend>
