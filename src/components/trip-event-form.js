@@ -1,4 +1,5 @@
 const TRANSFERS = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`];
+const ACTIVITIES = [`check-in`, `sightseeing`, `restaurant`];
 
 const createEventTypeItemMarkup = (item, isChecked) => {
   let name = item[0].toUpperCase() + item.slice(1);
