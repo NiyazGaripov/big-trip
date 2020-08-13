@@ -11,12 +11,12 @@ const createEventTypeItemMarkup = (item, isChecked) => {
   );
 };
 
-const createEventTypeGroupMarkup = () => {
-  const eventTypeItemsMarkup = TRANSFERS.map((it, index) => createEventTypeItemMarkup(it, index === 0)).join(`\n`);
+const createEventTypeGroupMarkup = (list, title) => {
+  const eventTypeItemsMarkup = list.map((it, index) => createEventTypeItemMarkup(it, index === 0)).join(`\n`);
 
   return (
     `<fieldset class="event__type-group">
-      <legend class="visually-hidden">Transfer</legend>
+      <legend class="visually-hidden">${title}</legend>
 
       ${eventTypeItemsMarkup}
 
@@ -25,7 +25,7 @@ const createEventTypeGroupMarkup = () => {
 };
 
 export const createTripEventFormComponent = () => {
-  const eventTypeGroupMarkup = createEventTypeGroupMarkup();
+  const eventTypeGroupMarkup = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
 
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
