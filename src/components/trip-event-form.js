@@ -13,7 +13,7 @@ const createEventTypeItemMarkup = (item, isChecked) => {
 };
 
 const createEventTypeGroupMarkup = (list, title) => {
-  const eventTypeItemsMarkup = list.map((it, index) => createEventTypeItemMarkup(it, index === 0)).join(`\n`);
+  const eventTypeItemsMarkup = list.map((it, index) => createEventTypeItemMarkup(it, index === 6)).join(`\n`);
 
   return (
     `<fieldset class="event__type-group">
@@ -27,6 +27,7 @@ const createEventTypeGroupMarkup = (list, title) => {
 
 export const createTripEventFormComponent = () => {
   const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
+  const eventTypeActivities = createEventTypeGroupMarkup(ACTIVITIES, `Activity`);
 
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
@@ -41,24 +42,7 @@ export const createTripEventFormComponent = () => {
           <div class="event__type-list">
             ${eventTypeTransfers}
 
-            <fieldset class="event__type-group">
-              <legend class="visually-hidden">Activity</legend>
-
-              <div class="event__type-item">
-                <input id="event-type-check-in-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="check-in">
-                <label class="event__type-label  event__type-label--check-in" for="event-type-check-in-1">Check-in</label>
-              </div>
-
-              <div class="event__type-item">
-                <input id="event-type-sightseeing-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="sightseeing">
-                <label class="event__type-label  event__type-label--sightseeing" for="event-type-sightseeing-1">Sightseeing</label>
-              </div>
-
-              <div class="event__type-item">
-                <input id="event-type-restaurant-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="restaurant">
-                <label class="event__type-label  event__type-label--restaurant" for="event-type-restaurant-1">Restaurant</label>
-              </div>
-            </fieldset>
+            ${eventTypeActivities}
           </div>
         </div>
 
