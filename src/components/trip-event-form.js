@@ -1,10 +1,12 @@
 const TRANSFERS = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`];
 
 const createEventTypeItemMarkup = (item, isChecked) => {
+  let name = item[0].toUpperCase() + item.slice(1);
+
   return (
     `<div class="event__type-item">
       <input id="event-type-${item}-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="${item}" ${isChecked ? `checked` : ``}>
-      <label class="event__type-label  event__type-label--${item}" for="event-type-${item}-1">${item}</label>
+      <label class="event__type-label  event__type-label--${item}" for="event-type-${item}-1">${name}</label>
     </div>`
   );
 };
