@@ -32,6 +32,21 @@ const createDestinationMarkup = (destination) => {
   );
 };
 
+const createOfferMarkup = (item) => {
+  const {offer, title, price} = item;
+
+  return (
+    `<div class="event__offer-selector">
+      <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offer}-1" type="checkbox" name="event-offer-${offer}" checked>
+      <label class="event__offer-label" for="event-offer-${offer}-1">
+        <span class="event__offer-title">${title}</span>
+        &plus;
+        &euro;&nbsp;<span class="event__offer-price">${price}</span>
+      </label>
+    </div>`
+  );
+};
+
 export const createTripEventFormComponent = () => {
   const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
   const eventTypeActivities = createEventTypeGroupMarkup(ACTIVITIES, `Activity`);
