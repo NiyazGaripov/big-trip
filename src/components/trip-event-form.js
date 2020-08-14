@@ -25,6 +25,12 @@ const createEventTypeGroupMarkup = (list, title) => {
   );
 };
 
+const createDestinationMarkup = (destination) => {
+  return (
+    `<option value=${destination}></option>`
+  );
+};
+
 export const createTripEventFormComponent = () => {
   const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
   const eventTypeActivities = createEventTypeGroupMarkup(ACTIVITIES, `Activity`);
