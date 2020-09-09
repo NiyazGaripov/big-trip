@@ -1,3 +1,5 @@
+const FILTERS = [`everything`, `future`, `past`];
+
 export const createFilterComponent = () => {
   return (
     `<form class="trip-filters" action="#" method="get">
