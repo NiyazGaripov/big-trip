@@ -1,3 +1,5 @@
+const NAMES = [`event`, `time`, `price`];
+
 const createSortDirectionIcon = () => {
   return (
     `<svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
@@ -14,7 +16,7 @@ const createSortList = (item, isChecked) => {
         <input id="sort-${item}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${item}" ${isChecked ? `checked` : ``}>
         <label class="trip-sort__btn" for="sort-${item}">
             ${item}
-            ${item === `time` || item === `price` ? icon : ``}
+            ${item === `event` ? `` : icon}
         </label>
     </div>`
   );
