@@ -1,8 +1,18 @@
-export const createNavMenuComponent = () => {
+const createNavigationItemComponent = (item, isActive) => {
+  const {path, name} = item;
+  const activeClass = isActive ? `trip-tabs__btn--active` : ``;
+
   return (
-    `<nav class="trip-controls__trip-tabs  trip-tabs">
-      <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
-      <a class="trip-tabs__btn" href="#">Stats</a>
+    `<a class="trip-tabs__btn ${activeClass}" href="${path}">${name}</a>`
+  );
+};
+
+export const createNavMenuComponent = (list) => {
+  const createNavigationList = list.map((item, index) => createNavigationItemComponent(item, index === 0)).join(`\n`);
+
+  return (
+    `<nav class="trip-controls__trip-tabs trip-tabs">
+        ${createNavigationList}
     </nav>`
   );
 };
