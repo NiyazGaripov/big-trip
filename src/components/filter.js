@@ -1,4 +1,4 @@
-const FILTERS = [`everything`, `future`, `past`];
+import {FILTERS} from './../constants.js';
 
 const createTripFilter = (filter, isChecked) => {
   return (
