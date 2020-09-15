@@ -1,6 +1,5 @@
-import {FILTERS} from './../constants.js';
-
-const createTripFilter = (filter, isChecked) => {
+const createTripFilter = (item, isChecked) => {
+  const {filter} = item;
   return (
     `<div class="trip-filters__filter">
       <input id="filter-${filter}" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="${filter}" ${isChecked ? `checked` : ``}>
@@ -9,8 +8,8 @@ const createTripFilter = (filter, isChecked) => {
   );
 };
 
-export const createFilterComponent = () => {
-  const createFilters = FILTERS.map((filter, index) => createTripFilter(filter, index === 0)).join(`\n`);
+export const createFilterComponent = (list) => {
+  const createFilters = list.map((item, index) => createTripFilter(item, index === 0)).join(`\n`);
 
   return (
     `<form class="trip-filters" action="#" method="get">
