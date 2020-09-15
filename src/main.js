@@ -8,16 +8,18 @@ import {createTripDayComponent} from './components/trip-day.js';
 import {createTripDaysComponent} from './components/trip-days.js';
 import {createTripEventFormComponent} from './components/trip-event-form.js';
 import {createTripInfoComponent} from './components/trip-info.js';
+import {generateNavigationList} from './mock/nav-menu.js';
 import {generateFilter} from './mock/filter.js';
 
 const TRIP_EVENT_COUNT = 3;
 const tripMain = document.querySelector(`.trip-main`);
 const tripMainControls = tripMain.querySelector(`.trip-main__trip-controls`);
 const tripEvents = document.querySelector(`.trip-events`);
+const navList = generateNavigationList();
 const filters = generateFilter();
 
 renderComponent(tripMain, createTripInfoComponent(), `afterbegin`);
-renderComponent(tripMainControls, createNavMenuComponent());
+renderComponent(tripMainControls, createNavMenuComponent(navList));
 renderComponent(tripMainControls, createFilterComponent(filters));
 renderComponent(tripEvents, createSortComponent());
 renderComponent(tripEvents, createTripEventFormComponent());
