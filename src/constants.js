@@ -30,3 +30,15 @@ const ACTIVITIES = [
   `sightseeing`,
   `restaurant`,
 ];
+
+const CITIES = [
+  `Saint-Petersburg`,
+  `Oslo`,
+  `London`,
+  `Montreal`,
+  `Tokyo`,
+  `Milano`,
+  `Athens`,
+  `Welington`,
+  `Kathmandu`,
+];
