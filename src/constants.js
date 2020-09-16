@@ -24,3 +24,9 @@ const TRANSFERS = [
   `drive`,
   `flight`,
 ];
+
+const ACTIVITIES = [
+  `check-in`,
+  `sightseeing`,
+  `restaurant`,
+];
