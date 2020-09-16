@@ -14,3 +14,13 @@ export const SORT_ITEM_NAMES = [
   `time`,
   `price`,
 ];
+
+const TRANSFERS = [
+  `taxi`,
+  `bus`,
+  `train`,
+  `ship`,
+  `transport`,
+  `drive`,
+  `flight`,
+];
