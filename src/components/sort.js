@@ -1,5 +1,3 @@
-const NAMES = [`event`, `time`, `price`];
-
 const createSortDirectionIcon = () => {
   return (
     `<svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
@@ -9,21 +7,22 @@ const createSortDirectionIcon = () => {
 };
 
 const createSortList = (item, isChecked) => {
+  const {name} = item;
   const icon = createSortDirectionIcon();
 
   return (
-    `<div class="trip-sort__item  trip-sort__item--${item}">
-        <input id="sort-${item}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${item}" ${isChecked ? `checked` : ``}>
-        <label class="trip-sort__btn" for="sort-${item}">
-            ${item}
-            ${item === `event` ? `` : icon}
+    `<div class="trip-sort__item  trip-sort__item--${name}">
+        <input id="sort-${name}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${name}" ${isChecked ? `checked` : ``}>
+        <label class="trip-sort__btn" for="sort-${name}">
+            ${name}
+            ${name === `event` ? `` : icon}
         </label>
     </div>`
   );
 };
 
-export const createSortComponent = () => {
-  const sortList = NAMES.map((item, index) => createSortList(item, index === 0)).join(`\n`);
+export const createSortComponent = (list) => {
+  const sortList = list.map((item, index) => createSortList(item, index === 0)).join(`\n`);
 
   return (
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
