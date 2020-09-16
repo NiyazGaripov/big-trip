@@ -8,3 +8,9 @@ export const FILTERS = [
   `future`,
   `past`,
 ];
+
+export const SORT_ITEM_NAMES = [
+  `event`,
+  `time`,
+  `price`,
+];
