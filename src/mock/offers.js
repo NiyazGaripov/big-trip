@@ -6,3 +6,9 @@ const generateOffer = () => {
     offers: getRandomArrayItem(OFFERS),
   };
 };
+
+export const generateOffers = (amount) => {
+  return new Array(amount)
+    .fill(``)
+    .map(generateOffer);
+};
