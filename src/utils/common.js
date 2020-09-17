@@ -7,3 +7,12 @@ export const getRandomArrayItem = (array) => {
 
   return array[randomItem];
 };
+
+export const generateDescription = (desc, minAmount, maxAmount) => {
+  const sentencesAmount = getRandomIntegerNumber(minAmount, maxAmount);
+
+  return new Array(sentencesAmount)
+    .fill(``)
+    .map(() => `${getRandomArrayItem(desc)}`)
+    .join(` `);
+};
