@@ -11,14 +11,16 @@ import {createTripInfoComponent} from './components/trip-info.js';
 import {generateNavigationList} from './mock/nav-menu.js';
 import {generateFilter} from './mock/filter.js';
 import {generateSortList} from './mock/sort.js';
+import {generateEventCards} from './mock/event.js';
 
-const TRIP_EVENT_COUNT = 3;
+const TRIP_EVENT_COUNT = 20;
 const tripMain = document.querySelector(`.trip-main`);
 const tripMainControls = tripMain.querySelector(`.trip-main__trip-controls`);
 const tripEvents = document.querySelector(`.trip-events`);
 const navList = generateNavigationList();
 const filters = generateFilter();
 const sortList = generateSortList();
+const events = generateEventCards(TRIP_EVENT_COUNT);
 
 renderComponent(tripMain, createTripInfoComponent(), `afterbegin`);
 renderComponent(tripMainControls, createNavMenuComponent(navList));
@@ -34,6 +36,7 @@ const tripDay = tripEvents.querySelector(`.trip-days__item`);
 renderComponent(tripDay, createTripEventsListComponent());
 
 const tripEventsList = tripEvents.querySelector(`.trip-events__list`);
-for (let i = 0; i < TRIP_EVENT_COUNT; i++) {
-  renderComponent(tripEventsList, createTripEventsItemComponent());
-}
+
+events.forEach((event) => {
+  renderComponent(tripEventsList, createTripEventsItemComponent(event));
+});
