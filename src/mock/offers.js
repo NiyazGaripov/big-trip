@@ -1,9 +1,10 @@
-import {OFFERS} from './../constants.js';
+import {OFFERS, COST_COEFFICIENT} from './../constants.js';
 import {getRandomArrayItem} from './../utils/common.js';
 
 const generateOffer = () => {
   return {
-    offers: getRandomArrayItem(OFFERS),
+    title: getRandomArrayItem(OFFERS),
+    price: Math.floor(Math.random() * COST_COEFFICIENT),
   };
 };
 
