@@ -25,3 +25,9 @@ const generateEventCard = () => {
     photos,
   };
 };
+
+export const generateEventCards = (amount) => {
+  return new Array(amount)
+    .fill(``)
+    .map(generateEventCard);
+};
