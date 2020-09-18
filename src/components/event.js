@@ -11,7 +11,7 @@ const createOffersMarkup = (item) => {
 };
 
 export const createTripEventsItemComponent = (event) => {
-  const {eventType, city, offers} = event;
+  const {eventType, city, cost, offers} = event;
   const eventName = eventType[0].toUpperCase() + eventType.slice(1);
   const offerList = offers.map((offer) => createOffersMarkup(offer)).join(`\n`);
 
@@ -33,7 +33,7 @@ export const createTripEventsItemComponent = (event) => {
         </div>
 
         <p class="event__price">
-          &euro;&nbsp;<span class="event__price-value">20</span>
+          &euro;&nbsp;<span class="event__price-value">${cost}</span>
         </p>
 
         <h4 class="visually-hidden">Offers:</h4>
