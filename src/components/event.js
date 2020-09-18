@@ -1,11 +1,27 @@
-export const createTripEventsItemComponent = () => {
+const createOffersMarkup = (item) => {
+  const {title, price} = item;
+
+  return (
+    `<li class="event__offer">
+      <span class="event__offer-title">${title}</span>
+      &plus;
+      &euro;&nbsp;<span class="event__offer-price">${price}</span>
+    </li>`
+  );
+};
+
+export const createTripEventsItemComponent = (event) => {
+  const {eventType, city, offers} = event;
+  const eventName = eventType[0].toUpperCase() + eventType.slice(1);
+  const offerList = offers.map((offer) => createOffersMarkup(offer)).join(`\n`);
+
   return (
     `<li class="trip-events__item">
       <div class="event">
         <div class="event__type">
-          <img class="event__type-icon" width="42" height="42" src="img/icons/taxi.png" alt="Event type icon">
+          <img class="event__type-icon" width="42" height="42" src="img/icons/${eventType}.png" alt="Event type icon">
         </div>
-        <h3 class="event__title">Taxi to Amsterdam</h3>
+        <h3 class="event__title">${eventName} to ${city}</h3>
 
         <div class="event__schedule">
           <p class="event__time">
@@ -22,11 +38,7 @@ export const createTripEventsItemComponent = () => {
 
         <h4 class="visually-hidden">Offers:</h4>
         <ul class="event__selected-offers">
-          <li class="event__offer">
-            <span class="event__offer-title">Order Uber</span>
-            &plus;
-            &euro;&nbsp;<span class="event__offer-price">20</span>
-          </li>
+            ${offerList}
         </ul>
 
         <button class="event__rollup-btn" type="button">
