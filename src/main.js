@@ -26,7 +26,7 @@ renderComponent(tripMain, createTripInfoComponent(), `afterbegin`);
 renderComponent(tripMainControls, createNavMenuComponent(navList));
 renderComponent(tripMainControls, createFilterComponent(filters));
 renderComponent(tripEvents, createSortComponent(sortList));
-renderComponent(tripEvents, createTripEventFormComponent());
+renderComponent(tripEvents, createTripEventFormComponent(events[0]));
 renderComponent(tripEvents, createTripDaysComponent());
 
 const tripDays = tripEvents.querySelector(`.trip-days`);
