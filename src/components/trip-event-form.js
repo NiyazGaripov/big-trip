@@ -45,11 +45,12 @@ const createOfferMarkup = (item, isChecked) => {
   );
 };
 
-export const createTripEventFormComponent = () => {
+export const createTripEventFormComponent = (event) => {
+  const {eventType, city, cost, offers, description, photos} = event;
   const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
   const eventTypeActivities = createEventTypeGroupMarkup(ACTIVITIES, `Activity`);
   const destinations = CITIES.map((it) => createDestinationMarkup(it));
-  const eventOffers = OFFERS.map((it, index) => createOfferMarkup(it, index === 0)).join(`\n`);
+  const eventOffers = offers.map((it, index) => createOfferMarkup(it, index === 0)).join(`\n`);
 
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
@@ -103,7 +104,7 @@ export const createTripEventFormComponent = () => {
       </header>
       <section class="event__details">
         <section class="event__section  event__section--offers">
-          <h3 class="event__section-title  event__section-title--offers">Offers</h3>
+          <h3 class="event__section-title  event__section-title--offers">${offers.length > 0 ? `Offers` : ``}</h3>
 
           <div class="event__available-offers">
             ${eventOffers}
