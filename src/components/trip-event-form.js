@@ -45,12 +45,19 @@ const createOfferMarkup = (item, isChecked) => {
   );
 };
 
+const createEventPhotoMarkup = (src) => {
+  return (
+    `<img class="event__photo" src=${src} alt="Event photo">`
+  );
+};
+
 export const createTripEventFormComponent = (event) => {
   const {offers, description, photos} = event;
   const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
   const eventTypeActivities = createEventTypeGroupMarkup(ACTIVITIES, `Activity`);
   const destinations = CITIES.map((it) => createDestinationMarkup(it));
   const eventOffers = offers.map((it, index) => createOfferMarkup(it, index === 0)).join(`\n`);
+  const eventPhotos = photos.map((it) => createEventPhotoMarkup(it)).join(`\n`);
 
   return (
     `<form class="trip-events__item  event  event--edit" action="#" method="post">
@@ -116,11 +123,7 @@ export const createTripEventFormComponent = (event) => {
 
           <div class="event__photos-container">
             <div class="event__photos-tape">
-              <img class="event__photo" src="img/photos/1.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/2.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/3.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/4.jpg" alt="Event photo">
-              <img class="event__photo" src="img/photos/5.jpg" alt="Event photo">
+                ${eventPhotos}
             </div>
           </div>
         </section>
