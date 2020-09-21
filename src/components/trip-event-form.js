@@ -1,33 +1,4 @@
-const TRANSFERS = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`];
-const ACTIVITIES = [`check-in`, `sightseeing`, `restaurant`];
-const CITIES = [`Saint-Petersburg`, `Oslo`, `Tokyo`, `Milano`, `Athens`];
-const OFFERS = [
-  {
-    offer: `luggage`,
-    title: `Add luggage`,
-    price: 30,
-  },
-  {
-    offer: `comfort`,
-    title: `Switch to comfort class`,
-    price: 100,
-  },
-  {
-    offer: `meal`,
-    title: `Add meal`,
-    price: 15,
-  },
-  {
-    offer: `seats`,
-    title: `Choose seats`,
-    price: 5,
-  },
-  {
-    offer: `train`,
-    title: `Travel by train`,
-    price: 40,
-  },
-];
+import {TRANSFERS, ACTIVITIES, CITIES, OFFERS} from './../constants.js';
 
 const createEventTypeItemMarkup = (item, isChecked) => {
   let name = item[0].toUpperCase() + item.slice(1);
