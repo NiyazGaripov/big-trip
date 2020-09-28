@@ -1,4 +1,4 @@
-import {TRANSFERS, ACTIVITIES, CITIES, OFFERS} from './../constants.js';
+import {EVENT_GROUPS, CITIES} from './../constants.js';
 
 const createEventTypeItemMarkup = (item, isChecked) => {
   let name = item[0].toUpperCase() + item.slice(1);
@@ -11,15 +11,21 @@ const createEventTypeItemMarkup = (item, isChecked) => {
   );
 };
 
-const createEventTypeGroupMarkup = (list, title) => {
-  const eventTypeItemsMarkup = list.map((it, index) => createEventTypeItemMarkup(it, index === 6)).join(`\n`);
+const createEventTypeGroupMarkup = (list, current) => {
+  const transfers = list.slice(0, 7);
+  const activities = list.slice(7);
+
+  const eventTypeTransfers = transfers.map((it, index, array) => createEventTypeItemMarkup(it, array[index] === current)).join(`\n`);
+  const eventTypeActivities = activities.map((it, index, array) => createEventTypeItemMarkup(it, array[index] === current)).join(`\n`);
 
   return (
     `<fieldset class="event__type-group">
-      <legend class="visually-hidden">${title}</legend>
-
-      ${eventTypeItemsMarkup}
-
+      <legend class="visually-hidden">Transfer</legend>
+      ${eventTypeTransfers}
+    </fieldset>
+    <fieldset class="event__type-group">
+      <legend class="visually-hidden">Activity</legend>
+      ${eventTypeActivities}
     </fieldset>`
   );
 };
@@ -52,9 +58,8 @@ const createEventPhotoMarkup = (src) => {
 };
 
 export const createTripEventFormComponent = (event) => {
-  const {offers, description, photos} = event;
-  const eventTypeTransfers = createEventTypeGroupMarkup(TRANSFERS, `Transfer`);
-  const eventTypeActivities = createEventTypeGroupMarkup(ACTIVITIES, `Activity`);
+  const {eventType, city, cost, offers, description, photos} = event;
+  const eventTypeGroups = createEventTypeGroupMarkup(EVENT_GROUPS, eventType);
   const destinations = CITIES.map((it) => createDestinationMarkup(it));
   const eventOffers = offers.map((it, index) => createOfferMarkup(it, index === 0)).join(`\n`);
   const eventPhotos = photos.map((it) => createEventPhotoMarkup(it)).join(`\n`);
@@ -70,9 +75,7 @@ export const createTripEventFormComponent = (event) => {
           <input class="event__type-toggle  visually-hidden" id="event-type-toggle-1" type="checkbox">
 
           <div class="event__type-list">
-            ${eventTypeTransfers}
-
-            ${eventTypeActivities}
+            ${eventTypeGroups}
           </div>
         </div>
 
