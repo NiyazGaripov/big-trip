@@ -26,7 +26,6 @@ renderComponent(tripMain, createTripInfoComponent(), `afterbegin`);
 renderComponent(tripMainControls, createNavMenuComponent(navList));
 renderComponent(tripMainControls, createFilterComponent(filters));
 renderComponent(tripEvents, createSortComponent(sortList));
-renderComponent(tripEvents, createTripEventFormComponent(events[0]));
 renderComponent(tripEvents, createTripDaysComponent());
 
 const tripDays = tripEvents.querySelector(`.trip-days`);
@@ -37,6 +36,7 @@ renderComponent(tripDay, createTripEventsListComponent());
 
 const tripEventsList = tripEvents.querySelector(`.trip-events__list`);
 
+renderComponent(tripEventsList, createTripEventFormComponent(events[0]));
 events.forEach((event) => {
   renderComponent(tripEventsList, createTripEventsItemComponent(event));
 });
