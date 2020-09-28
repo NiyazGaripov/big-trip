@@ -60,6 +60,7 @@ const createEventPhotoMarkup = (src) => {
 export const createTripEventFormComponent = (event) => {
   const {eventType, city, cost, offers, description, photos} = event;
   const eventTypeGroups = createEventTypeGroupMarkup(EVENT_GROUPS, eventType);
+  const eventName = eventType[0].toUpperCase() + eventType.slice(1);
   const destinations = CITIES.map((it) => createDestinationMarkup(it));
   const eventOffers = offers.map((it, index) => createOfferMarkup(it, index === 0)).join(`\n`);
   const eventPhotos = photos.map((it) => createEventPhotoMarkup(it)).join(`\n`);
@@ -81,9 +82,9 @@ export const createTripEventFormComponent = (event) => {
 
         <div class="event__field-group  event__field-group--destination">
           <label class="event__label  event__type-output" for="event-destination-1">
-            Flight to
+            ${eventName} to
           </label>
-          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="Geneva" list="destination-list-1">
+          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${city}" list="destination-list-1">
           <datalist id="destination-list-1">
             ${destinations}
           </datalist>
