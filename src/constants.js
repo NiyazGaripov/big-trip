@@ -15,7 +15,7 @@ export const SORT_ITEM_NAMES = [
   `price`,
 ];
 
-export const TRANSFERS = [
+export const EVENT_GROUPS = [
   `taxi`,
   `bus`,
   `train`,
@@ -23,9 +23,6 @@ export const TRANSFERS = [
   `transport`,
   `drive`,
   `flight`,
-];
-
-export const ACTIVITIES = [
   `check-in`,
   `sightseeing`,
   `restaurant`,
