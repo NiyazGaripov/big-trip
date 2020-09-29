@@ -63,3 +63,18 @@ export const DESCRIPTIONS = [
 ];
 
 export const COST_COEFFICIENT = 100;
+
+export const MONTH_NAMES = [
+  `Jan`,
+  `Feb`,
+  `Mar`,
+  `Apr`,
+  `May`,
+  `June`,
+  `July`,
+  `Aug`,
+  `Sep`,
+  `Oct`,
+  `Nov`,
+  `Dec`,
+];
