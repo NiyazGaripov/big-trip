@@ -1,6 +1,5 @@
 import {renderComponent} from './utils/render.js';
 import {createTripEventsItemComponent} from './components/event.js';
-import {createTripEventsListComponent} from './components/events.js';
 import {createFilterComponent} from './components/filter.js';
 import {createNavMenuComponent} from './components/nav-menu.js';
 import {createSortComponent} from './components/sort.js';
@@ -30,9 +29,6 @@ renderComponent(tripEvents, createTripDaysComponent());
 
 const tripDays = tripEvents.querySelector(`.trip-days`);
 renderComponent(tripDays, createTripDayComponent());
-
-const tripDay = tripEvents.querySelector(`.trip-days__item`);
-renderComponent(tripDay, createTripEventsListComponent());
 
 const tripEventsList = tripEvents.querySelector(`.trip-events__list`);
 
