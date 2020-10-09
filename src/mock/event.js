@@ -2,8 +2,8 @@ import {EVENT_GROUPS, CITIES, DESCRIPTIONS, COST_COEFFICIENT} from './../constan
 import {getRandomIntegerNumber, getRandomArrayItem, generateDescription, getRandomDate} from './../utils/common.js';
 import {generateOffers} from './../mock/offers.js';
 
-const MIN_PRICE = 1000;
-const MAX_PRICE = 500000;
+const MIN_PRICE = 100;
+const MAX_PRICE = 500;
 const MIN_OFFERS_AMOUNT = 0;
 const MAX_OFFERS_AMOUNT = 5;
 const MIN_AMOUNT = 1;
@@ -14,7 +14,6 @@ const generateEventCard = () => {
   const eventType = getRandomArrayItem(EVENT_GROUPS);
   const city = getRandomArrayItem(CITIES);
   const date = getRandomDate();
-  const cost = Math.floor(Math.random() * COST_COEFFICIENT);
   const offersAmount = getRandomIntegerNumber(MIN_OFFERS_AMOUNT, MAX_OFFERS_AMOUNT);
   const offers = generateOffers(offersAmount);
   const description = generateDescription(DESCRIPTIONS, MIN_AMOUNT, MAX_AMOUNT);
@@ -25,7 +24,6 @@ const generateEventCard = () => {
     eventType,
     city,
     date,
-    cost,
     offers,
     description,
     photos,
