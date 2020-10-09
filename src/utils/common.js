@@ -28,3 +28,14 @@ export const getRandomDate = () => {
 
   return targetDate;
 };
+
+export const getCommonPrice = (events) => {
+  let commonPrice = 0;
+
+  events.forEach((event) => {
+    const commonOffersPrice = event.offers.map((it) => it.price).reduce((a, b) => (a + b), 0);
+    commonPrice += (commonOffersPrice) + event.price;
+  });
+
+  return commonPrice;
+};
