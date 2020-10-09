@@ -1,8 +1,10 @@
-export const createTripInfoComponent = () => {
+export const createTripInfoComponent = (events) => {
+  const cities = events.map((it) => it.city).join(`&mdash;`);
+
   return (
     `<section class="trip-main__trip-info  trip-info">
       <div class="trip-info__main">
-        <h1 class="trip-info__title">Amsterdam &mdash; Chamonix &mdash; Geneva</h1>
+        <h1 class="trip-info__title">${cities}</h1>
 
         <p class="trip-info__dates">Mar 18&nbsp;&mdash;&nbsp;20</p>
       </div>
