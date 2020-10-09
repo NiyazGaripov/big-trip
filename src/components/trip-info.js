@@ -1,5 +1,8 @@
+import {getCommonPrice} from './../utils/common.js';
+
 export const createTripInfoComponent = (events) => {
   const cities = events.map((it) => it.city).join(`&mdash;`);
+  const price = getCommonPrice(events);
 
   return (
     `<section class="trip-main__trip-info  trip-info">
@@ -10,7 +13,7 @@ export const createTripInfoComponent = (events) => {
       </div>
 
       <p class="trip-info__cost">
-        Total: &euro;&nbsp;<span class="trip-info__cost-value">1230</span>
+        Total: &euro;&nbsp;<span class="trip-info__cost-value">${price}</span>
       </p>
     </section>`
   );
