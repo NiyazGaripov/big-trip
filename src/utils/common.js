@@ -1,5 +1,5 @@
 const MIN_COEFFICIENT = 0;
-const MAX_COEFFICIENT = 400;
+const MAX_COEFFICIENT = 30;
 
 export const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(Math.random() * (max - min));
@@ -26,6 +26,7 @@ export const getRandomDate = () => {
 
   targetDate.setDate(targetDate.getDate() + diffValue);
 
+  console.log(targetDate);
   return targetDate;
 };
 
