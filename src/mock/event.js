@@ -1,4 +1,4 @@
-import {EVENT_GROUPS, CITIES, DESCRIPTIONS, COST_COEFFICIENT} from './../constants.js';
+import {EVENT_GROUPS, CITIES, DESCRIPTIONS} from './../constants.js';
 import {getRandomIntegerNumber, getRandomArrayItem, generateDescription, getRandomDate} from './../utils/common.js';
 import {generateOffers} from './../mock/offers.js';
 
