@@ -26,7 +26,6 @@ export const getRandomDate = () => {
 
   targetDate.setDate(targetDate.getDate() + diffValue);
 
-  console.log(targetDate);
   return targetDate;
 };
 
