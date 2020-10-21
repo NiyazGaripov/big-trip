@@ -1,5 +1,17 @@
+export const RenderPosition = {
+  AFTERBEGIN: `afterbegin`,
+  BEFOREEND: `beforeend`
+};
+
 export const renderComponent = (container, component, place = `beforeend`) => {
-  container.insertAdjacentHTML(place, component);
+  switch (place) {
+    case RenderPosition.AFTERBEGIN:
+      container.prepend(component);
+      break;
+    case RenderPosition.BEFOREEND:
+      container.append(component);
+      break;
+  }
 };
 
 export const createElement = (template) => {
