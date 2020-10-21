@@ -1,5 +1,6 @@
 import {MONTH_NAMES} from "../constants";
 import {createTripEventsItemComponent} from "./event";
+import {createElement} from "../utils/render";
 
 const createTripDayComponent = (item, index) => {
   const tripEvent = createTripEventsItemComponent(item);
@@ -18,7 +19,7 @@ const createTripDayComponent = (item, index) => {
 };
 
 
-export const createTripDaysComponent = (events) => {
+const createTripDaysComponent = (events) => {
   const sortEvents = events.slice().sort((a, b) => a.date - b.date);
 
   return (
@@ -27,3 +28,26 @@ export const createTripDaysComponent = (events) => {
     </ul>`
   );
 };
+
+export class TripDays {
+  constructor(days) {
+    this._days = days;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTripDaysComponent(this._days);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
