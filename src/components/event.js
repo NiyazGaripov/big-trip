@@ -1,3 +1,5 @@
+import {createElement} from "../utils/render";
+
 const createOffersMarkup = (item) => {
   const {title, price} = item;
 
@@ -10,7 +12,7 @@ const createOffersMarkup = (item) => {
   );
 };
 
-export const createTripEventsItemComponent = (event) => {
+const createTripEventsItemComponent = (event) => {
   const {eventType, city, price, offers} = event;
   const eventName = eventType[0].toUpperCase() + eventType.slice(1);
   const offerList = offers.map((offer) => createOffersMarkup(offer)).join(`\n`);
@@ -48,3 +50,26 @@ export const createTripEventsItemComponent = (event) => {
     </li>`
   );
 };
+
+export class TripEvent {
+  constructor(event) {
+    this._event = event;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTripEventsItemComponent(this._event);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
