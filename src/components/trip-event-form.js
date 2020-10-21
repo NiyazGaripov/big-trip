@@ -1,4 +1,5 @@
 import {EVENT_GROUPS, CITIES} from './../constants.js';
+import {createElement} from "../utils/render";
 
 const createEventTypeItemMarkup = (item, isChecked) => {
   let name = item[0].toUpperCase() + item.slice(1);
@@ -57,7 +58,7 @@ const createEventPhotoMarkup = (src) => {
   );
 };
 
-export const createTripEventFormComponent = (event) => {
+const createTripEventFormComponent = (event) => {
   const {eventType, city, cost, offers, description, photos} = event;
   const eventTypeGroups = createEventTypeGroupMarkup(EVENT_GROUPS, eventType);
   const eventName = eventType[0].toUpperCase() + eventType.slice(1);
@@ -135,3 +136,26 @@ export const createTripEventFormComponent = (event) => {
     </form>`
   );
 };
+
+export class TripEventForm {
+  constructor(event) {
+    this._event = event;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTripEventFormComponent(this._event);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
