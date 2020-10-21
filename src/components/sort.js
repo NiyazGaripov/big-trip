@@ -1,3 +1,5 @@
+import {createElement} from "../utils/render";
+
 const createSortDirectionIcon = () => {
   return (
     `<svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
@@ -21,7 +23,7 @@ const createSortList = (item, isChecked) => {
   );
 };
 
-export const createSortComponent = (list) => {
+const createSortComponent = (list) => {
   const sortList = list.map((item, index) => createSortList(item, index === 0)).join(`\n`);
 
   return (
@@ -34,3 +36,26 @@ export const createSortComponent = (list) => {
     </form>`
   );
 };
+
+export class Sort {
+  constructor(list) {
+    this._list = list;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSortComponent(this._list);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
