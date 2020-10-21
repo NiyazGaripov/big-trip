@@ -1,3 +1,5 @@
+import {createElement} from "../utils/render";
+
 const createTripFilter = (item, isChecked) => {
   const {filter} = item;
   return (
@@ -8,7 +10,7 @@ const createTripFilter = (item, isChecked) => {
   );
 };
 
-export const createFilterComponent = (list) => {
+const createFilterComponent = (list) => {
   const createFilters = list.map((item, index) => createTripFilter(item, index === 0)).join(`\n`);
 
   return (
@@ -19,3 +21,26 @@ export const createFilterComponent = (list) => {
     </form>`
   );
 };
+
+export class Filter {
+  constructor(filters) {
+    this._filters = filters;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilterComponent(this._filters);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
