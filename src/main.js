@@ -1,4 +1,4 @@
-import {renderComponent} from './utils/render.js';
+import {renderComponent, RenderPosition} from './utils/render.js';
 import {TripEvent} from './components/event.js';
 import {Filter} from './components/filter.js';
 import {Navigation} from './components/nav-menu.js';
@@ -20,4 +20,5 @@ const filters = generateFilter();
 const sortList = generateSortList();
 const events = generateEventCards(TRIP_EVENT_COUNT);
 
-renderComponent(tripMain, new TripInfo(events).getElement());
+renderComponent(tripMain, new TripInfo(events).getElement(), RenderPosition.AFTERBEGIN);
+renderComponent(tripMainControls, new Navigation(navList).getElement());
