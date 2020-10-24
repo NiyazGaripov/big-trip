@@ -22,3 +22,4 @@ const events = generateEventCards(TRIP_EVENT_COUNT);
 
 renderComponent(tripMain, new TripInfo(events).getElement(), RenderPosition.AFTERBEGIN);
 renderComponent(tripMainControls, new Navigation(navList).getElement());
+renderComponent(tripMainControls, new Filter(filters).getElement());
