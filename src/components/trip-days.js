@@ -1,10 +1,7 @@
 import {MONTH_NAMES} from "../constants";
-import {createTripEventsItemComponent} from "./event";
 import {createElement} from "../utils/render";
 
 const createTripDayComponent = (item, index) => {
-  const tripEvent = createTripEventsItemComponent(item);
-
   return (
     `<li class="trip-days__item  day">
       <div class="day__info">
@@ -12,7 +9,7 @@ const createTripDayComponent = (item, index) => {
         <time class="day__date" datetime="2019-03-18">${MONTH_NAMES[item.date.getMonth()]} ${item.date.getDate()}</time>
       </div>
       <ul class="trip-events__list">
-          ${tripEvent}
+
       </ul>
     </li>`
   );
