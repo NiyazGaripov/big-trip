@@ -15,12 +15,29 @@ const TRIP_EVENT_COUNT = 20;
 const tripMain = document.querySelector(`.trip-main`);
 const tripMainControls = tripMain.querySelector(`.trip-main__trip-controls`);
 const tripEvents = document.querySelector(`.trip-events`);
+
 const navList = generateNavigationList();
 const filters = generateFilter();
 const sortList = generateSortList();
 const events = generateEventCards(TRIP_EVENT_COUNT);
 
+const renderTrip = (parentNode, it) => {
+  const tripEventComponent = new TripEvent(it);
+  const tripEventFormComponent = new TripEventForm(it);
+
+  renderComponent(parentNode, tripEventComponent.getElement());
+};
+
 renderComponent(tripMain, new TripInfo(events).getElement(), RenderPosition.AFTERBEGIN);
 renderComponent(tripMainControls, new Navigation(navList).getElement());
 renderComponent(tripMainControls, new Filter(filters).getElement());
 renderComponent(tripEvents, new Sort(sortList).getElement());
+renderComponent(tripEvents, new TripDays(events).getElement());
+
+const tripEventsList = tripEvents.querySelectorAll(`.trip-events__list`);
+
+events.forEach((it) => {
+  tripEventsList.forEach((event) => {
+    renderTrip(event, it);
+  });
+});
