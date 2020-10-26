@@ -22,6 +22,14 @@ const sortList = generateSortList();
 const events = generateEventCards(TRIP_EVENT_COUNT);
 
 const renderTrip = (parentNode, it) => {
+  const replaceRoutePointToEventForm = () => {
+    parentNode.replaceChild(tripEventFormComponent.getElement(), tripEventComponent.getElement());
+  };
+
+  const replaceEventFormToRoutePoint = () => {
+    parentNode.replaceChild(tripEventComponent.getElement(), tripEventFormComponent.getElement());
+  };
+
   const tripEventComponent = new TripEvent(it);
   const tripEventFormComponent = new TripEventForm(it);
 
