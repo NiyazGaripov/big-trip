@@ -31,7 +31,10 @@ const renderTrip = (parentNode, it) => {
   };
 
   const tripEventComponent = new TripEvent(it);
+  const eventRollupButton = tripEventComponent.getElement().querySelector(`.event__rollup-btn`);
+
   const tripEventFormComponent = new TripEventForm(it);
+  const form = tripEventFormComponent.getElement();
 
   renderComponent(parentNode, tripEventComponent.getElement());
 };
