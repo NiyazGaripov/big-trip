@@ -41,6 +41,7 @@ const renderTrip = (parentNode, it) => {
 
   eventRollupButton.addEventListener(`click`, () => {
     replaceRoutePointToEventForm();
+    document.addEventListener(`keydown`, onFormCloseEsc);
   });
 
   const tripEventFormComponent = new TripEventForm(it);
@@ -48,6 +49,7 @@ const renderTrip = (parentNode, it) => {
 
   form.addEventListener(`submit`, () => {
     replaceEventFormToRoutePoint();
+    document.removeEventListener(`keydown`, onFormCloseEsc);
   });
 
   renderComponent(parentNode, tripEventComponent.getElement());
