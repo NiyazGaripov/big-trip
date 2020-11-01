@@ -1,4 +1,5 @@
 import {renderComponent, RenderPosition} from './utils/render.js';
+import {onEscKeyDown} from './utils/common.js';
 import {TripEvent} from './components/event.js';
 import {Filter} from './components/filter.js';
 import {Navigation} from './components/nav-menu.js';
@@ -28,6 +29,11 @@ const renderTrip = (parentNode, it) => {
 
   const replaceEventFormToRoutePoint = () => {
     parentNode.replaceChild(tripEventComponent.getElement(), tripEventFormComponent.getElement());
+  };
+
+  const onFormCloseEsc = (evt) => {
+    onEscKeyDown(evt, replaceEventFormToRoutePoint);
+    document.removeEventListener(`keydown`, onFormCloseEsc);
   };
 
   const tripEventComponent = new TripEvent(it);
