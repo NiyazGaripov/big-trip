@@ -1,5 +1,6 @@
 const MIN_COEFFICIENT = 0;
 const MAX_COEFFICIENT = 30;
+const ESC_KEYCODE = 27;
 
 export const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(Math.random() * (max - min));
@@ -38,4 +39,10 @@ export const getCommonPrice = (events) => {
   });
 
   return commonPrice;
+};
+
+export const onEscKeyDown = (evt, callback) => {
+  if (evt.keyCode === ESC_KEYCODE) {
+    callback();
+  }
 };
