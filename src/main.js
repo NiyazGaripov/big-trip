@@ -11,6 +11,7 @@ import {generateNavigationList} from './mock/nav-menu.js';
 import {generateFilter} from './mock/filter.js';
 import {generateSortList} from './mock/sort.js';
 import {generateEventCards} from './mock/event.js';
+import {NoEvents} from "./components/no-events";
 
 const TRIP_EVENT_COUNT = 20;
 const tripMain = document.querySelector(`.trip-main`);
@@ -55,16 +56,26 @@ const renderTrip = (parentNode, it) => {
   renderComponent(parentNode, tripEventComponent.getElement());
 };
 
+const renderTripDays = (container, eventList) => {
+  const hasEvents = eventList.length > 0;
+
+  if (!hasEvents) {
+    renderComponent(container, new NoEvents().getElement());
+  }
+
+  renderComponent(container, new TripDays(eventList).getElement());
+
+  const tripEventsList = container.querySelectorAll(`.trip-events__list`);
+
+  eventList.forEach((it) => {
+    tripEventsList.forEach((event) => {
+      renderTrip(event, it);
+    });
+  });
+};
+
 renderComponent(tripMain, new TripInfo(events).getElement(), RenderPosition.AFTERBEGIN);
 renderComponent(tripMainControls, new Navigation(navList).getElement());
 renderComponent(tripMainControls, new Filter(filters).getElement());
 renderComponent(tripEvents, new Sort(sortList).getElement());
-renderComponent(tripEvents, new TripDays(events).getElement());
-
-const tripEventsList = tripEvents.querySelectorAll(`.trip-events__list`);
-
-events.forEach((it) => {
-  tripEventsList.forEach((event) => {
-    renderTrip(event, it);
-  });
-});
+renderTripDays(tripEvents, events);
