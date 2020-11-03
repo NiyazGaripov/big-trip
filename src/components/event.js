@@ -1,4 +1,5 @@
 import {createElement} from "../utils/render";
+import {AbstractComponent} from "./abstract-component";
 
 const createOffersMarkup = (item) => {
   const {title, price} = item;
@@ -51,25 +52,13 @@ const createTripEventsItemComponent = (event) => {
   );
 };
 
-export class TripEvent {
+export class TripEvent extends AbstractComponent {
   constructor(event) {
+    super();
     this._event = event;
-    this._element = null;
   }
 
   getTemplate() {
     return createTripEventsItemComponent(this._event);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
