@@ -1,5 +1,5 @@
 import {EVENT_GROUPS, CITIES} from './../constants.js';
-import {createElement} from "../utils/render";
+import {AbstractComponent} from "./abstract-component";
 
 const createEventTypeItemMarkup = (item, isChecked) => {
   let name = item[0].toUpperCase() + item.slice(1);
@@ -137,25 +137,13 @@ const createTripEventFormComponent = (event) => {
   );
 };
 
-export class TripEventForm {
+export class TripEventForm extends AbstractComponent {
   constructor(event) {
+    super();
     this._event = event;
-    this._element = null;
   }
 
   getTemplate() {
     return createTripEventFormComponent(this._event);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
