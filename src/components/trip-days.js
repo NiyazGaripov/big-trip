@@ -1,5 +1,5 @@
 import {MONTH_NAMES} from "../constants";
-import {createElement} from "../utils/render";
+import {AbstractComponent} from "./abstract-component";
 
 const createTripDayComponent = (item, index) => {
   return (
@@ -26,25 +26,13 @@ const createTripDaysComponent = (events) => {
   );
 };
 
-export class TripDays {
+export class TripDays extends AbstractComponent {
   constructor(days) {
+    super();
     this._days = days;
-    this._element = null;
   }
 
   getTemplate() {
     return createTripDaysComponent(this._days);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
