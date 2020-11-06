@@ -1,5 +1,5 @@
 import {getCommonPrice} from './../utils/common.js';
-import {createElement} from "../utils/render";
+import {AbstractComponent} from "./abstract-component";
 
 const createTripInfoComponent = (events) => {
   const cities = events.map((it) => it.city).join(`&mdash;`);
@@ -20,25 +20,13 @@ const createTripInfoComponent = (events) => {
   );
 };
 
-export class TripInfo {
+export class TripInfo extends AbstractComponent {
   constructor(events) {
+    super();
     this._events = events;
-    this._element = null;
   }
 
   getTemplate() {
     return createTripInfoComponent(this._events);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
