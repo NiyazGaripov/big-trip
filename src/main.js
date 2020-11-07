@@ -53,17 +53,17 @@ const renderTrip = (parentNode, it) => {
     document.removeEventListener(`keydown`, onFormCloseEsc);
   });
 
-  renderComponent(parentNode, tripEventComponent.getElement());
+  renderComponent(parentNode, tripEventComponent);
 };
 
 const renderTripDays = (container, eventList) => {
   const hasEvents = eventList.length > 0;
 
   if (!hasEvents) {
-    renderComponent(container, new NoEvents().getElement());
+    renderComponent(container, new NoEvents());
   }
 
-  renderComponent(container, new TripDays(eventList).getElement());
+  renderComponent(container, new TripDays(eventList));
 
   const tripEventsList = container.querySelectorAll(`.trip-events__list`);
 
@@ -74,8 +74,8 @@ const renderTripDays = (container, eventList) => {
   });
 };
 
-renderComponent(tripMain, new TripInfo(events).getElement(), RenderPosition.AFTERBEGIN);
-renderComponent(tripMainControls, new Navigation(navList).getElement());
-renderComponent(tripMainControls, new Filter(filters).getElement());
-renderComponent(tripEvents, new Sort(sortList).getElement());
+renderComponent(tripMain, new TripInfo(events), RenderPosition.AFTERBEGIN);
+renderComponent(tripMainControls, new Navigation(navList));
+renderComponent(tripMainControls, new Filter(filters));
+renderComponent(tripEvents, new Sort(sortList));
 renderTripDays(tripEvents, events);
