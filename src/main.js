@@ -38,17 +38,15 @@ const renderTrip = (parentNode, it) => {
   };
 
   const tripEventComponent = new TripEvent(it);
-  const eventRollupButton = tripEventComponent.getElement().querySelector(`.event__rollup-btn`);
 
-  eventRollupButton.addEventListener(`click`, () => {
+  tripEventComponent.setClickHandler(() => {
     replaceRoutePointToEventForm();
     document.addEventListener(`keydown`, onFormCloseEsc);
   });
 
   const tripEventFormComponent = new TripEventForm(it);
-  const form = tripEventFormComponent.getElement();
 
-  form.addEventListener(`submit`, () => {
+  tripEventFormComponent.setSubmitHandler(() => {
     replaceEventFormToRoutePoint();
     document.removeEventListener(`keydown`, onFormCloseEsc);
   });
