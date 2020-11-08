@@ -62,6 +62,6 @@ export class TripEvent extends AbstractComponent {
   }
 
   setClickHandler(callback) {
-    this.getTemplate().querySelector(`.event__rollup-btn`).addEventListener(`click`, callback);
+    this.getElement().querySelector(`.event__rollup-btn`).addEventListener(`click`, callback);
   }
 }
