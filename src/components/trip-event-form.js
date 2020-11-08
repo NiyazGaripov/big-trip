@@ -146,4 +146,8 @@ export class TripEventForm extends AbstractComponent {
   getTemplate() {
     return createTripEventFormComponent(this._event);
   }
+
+  setSubmitHandler(callback) {
+    this.getElement().addEventListener(`submit`, callback);
+  }
 }
