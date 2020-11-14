@@ -1,17 +1,13 @@
 import {renderComponent, RenderPosition} from './utils/render.js';
-import {onEscKeyDown} from './utils/common.js';
-import {TripEvent} from './components/event.js';
 import {Filter} from './components/filter.js';
 import {Navigation} from './components/nav-menu.js';
 import {Sort} from './components/sort.js';
-import {TripDays} from './components/trip-days.js';
-import {TripEventForm} from './components/trip-event-form.js';
 import {TripInfo} from './components/trip-info.js';
 import {generateNavigationList} from './mock/nav-menu.js';
 import {generateFilter} from './mock/filter.js';
 import {generateSortList} from './mock/sort.js';
 import {generateEventCards} from './mock/event.js';
-import {NoEvents} from "./components/no-events";
+import {TripController} from "./controllers/trip";
 
 const TRIP_EVENT_COUNT = 20;
 const tripMain = document.querySelector(`.trip-main`);
@@ -23,57 +19,12 @@ const filters = generateFilter();
 const sortList = generateSortList();
 const events = generateEventCards(TRIP_EVENT_COUNT);
 
-const renderTrip = (parentNode, it) => {
-  const replaceRoutePointToEventForm = () => {
-    parentNode.replaceChild(tripEventFormComponent.getElement(), tripEventComponent.getElement());
-  };
-
-  const replaceEventFormToRoutePoint = () => {
-    parentNode.replaceChild(tripEventComponent.getElement(), tripEventFormComponent.getElement());
-  };
-
-  const onFormCloseEsc = (evt) => {
-    onEscKeyDown(evt, replaceEventFormToRoutePoint);
-    document.removeEventListener(`keydown`, onFormCloseEsc);
-  };
-
-  const tripEventComponent = new TripEvent(it);
-
-  tripEventComponent.setClickHandler(() => {
-    replaceRoutePointToEventForm();
-    document.addEventListener(`keydown`, onFormCloseEsc);
-  });
-
-  const tripEventFormComponent = new TripEventForm(it);
-
-  tripEventFormComponent.setSubmitHandler(() => {
-    replaceEventFormToRoutePoint();
-    document.removeEventListener(`keydown`, onFormCloseEsc);
-  });
-
-  renderComponent(parentNode, tripEventComponent);
-};
-
-const renderTripDays = (container, eventList) => {
-  const hasEvents = eventList.length > 0;
-
-  if (!hasEvents) {
-    renderComponent(container, new NoEvents());
-  }
-
-  renderComponent(container, new TripDays(eventList));
-
-  const tripEventsList = container.querySelectorAll(`.trip-events__list`);
-
-  eventList.forEach((it) => {
-    tripEventsList.forEach((event) => {
-      renderTrip(event, it);
-    });
-  });
-};
-
 renderComponent(tripMain, new TripInfo(events), RenderPosition.AFTERBEGIN);
 renderComponent(tripMainControls, new Navigation(navList));
 renderComponent(tripMainControls, new Filter(filters));
 renderComponent(tripEvents, new Sort(sortList));
-renderTripDays(tripEvents, events);
+
+
+const trip = new TripController(tripEvents);
+trip.render(events);
+
