@@ -1,4 +1,5 @@
-import {AbstractComponent} from "./abstract-component";
+import {AbstractComponent} from './abstract-component';
+import {generateSortList} from './../mock/sort';
 
 const createSortDirectionIcon = () => {
   return (
@@ -23,14 +24,15 @@ const createSortList = (item, isChecked) => {
   );
 };
 
-const createSortComponent = (list) => {
-  const sortList = list.map((item, index) => createSortList(item, index === 0)).join(`\n`);
+const createSortComponent = () => {
+  const sortList = generateSortList();
+  const sortListMarkup = sortList.map((item, index) => createSortList(item, index === 0)).join(`\n`);
 
   return (
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
       <span class="trip-sort__item  trip-sort__item--day">Day</span>
 
-      ${sortList}
+      ${sortListMarkup}
 
       <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
     </form>`
@@ -38,12 +40,11 @@ const createSortComponent = (list) => {
 };
 
 export class Sort extends AbstractComponent {
-  constructor(list) {
+  constructor() {
     super();
-    this._list = list;
   }
 
   getTemplate() {
-    return createSortComponent(this._list);
+    return createSortComponent();
   }
 }
