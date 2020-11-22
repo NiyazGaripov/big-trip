@@ -10,15 +10,14 @@ const createSortDirectionIcon = () => {
 };
 
 const createSortList = (item, isChecked) => {
-  const {name} = item;
   const icon = createSortDirectionIcon();
 
   return (
-    `<div class="trip-sort__item  trip-sort__item--${name}">
-        <input id="sort-${name}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${name}" ${isChecked ? `checked` : ``}>
-        <label class="trip-sort__btn" for="sort-${name}">
-            ${name}
-            ${name === `event` ? `` : icon}
+    `<div class="trip-sort__item  trip-sort__item--${item}">
+        <input data-sort-type="${item}" id="sort-${item}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${name}" ${isChecked ? `checked` : ``}>
+        <label class="trip-sort__btn" for="sort-${item}">
+            ${item}
+            ${item === `event` ? `` : icon}
         </label>
     </div>`
   );
