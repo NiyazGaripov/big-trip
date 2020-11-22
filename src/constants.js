@@ -78,3 +78,9 @@ export const MONTH_NAMES = [
   `Nov`,
   `Dec`,
 ];
+
+export const SortType = {
+  EVENT: `event`,
+  TIME: `time`,
+  PRICE: `price`,
+};
