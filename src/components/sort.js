@@ -1,5 +1,5 @@
 import {AbstractComponent} from './abstract-component';
-import {SORT_ITEM_NAMES} from './../constants';
+import {SORT_ITEM_NAMES, SortType} from './../constants';
 
 const createSortDirectionIcon = () => {
   return (
@@ -40,6 +40,7 @@ const createSortComponent = () => {
 export class Sort extends AbstractComponent {
   constructor() {
     super();
+    this._currentSortType = SortType.DEFAULT;
   }
 
   getTemplate() {
