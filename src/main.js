@@ -1,7 +1,6 @@
 import {renderComponent, RenderPosition} from './utils/render.js';
 import {Filter} from './components/filter.js';
 import {Navigation} from './components/nav-menu.js';
-import {Sort} from './components/sort.js';
 import {TripInfo} from './components/trip-info.js';
 import {generateNavigationList} from './mock/nav-menu.js';
 import {generateFilter} from './mock/filter.js';
@@ -20,8 +19,6 @@ const events = generateEventCards(TRIP_EVENT_COUNT);
 renderComponent(tripMain, new TripInfo(events), RenderPosition.AFTERBEGIN);
 renderComponent(tripMainControls, new Navigation(navList));
 renderComponent(tripMainControls, new Filter(filters));
-renderComponent(tripEvents, new Sort());
-
 
 const trip = new TripController(tripEvents);
 trip.render(events);
