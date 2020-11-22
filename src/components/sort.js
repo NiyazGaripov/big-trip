@@ -1,5 +1,5 @@
 import {AbstractComponent} from './abstract-component';
-import {generateSortList} from './../mock/sort';
+import {SORT_ITEM_NAMES} from './../constants';
 
 const createSortDirectionIcon = () => {
   return (
@@ -25,14 +25,13 @@ const createSortList = (item, isChecked) => {
 };
 
 const createSortComponent = () => {
-  const sortList = generateSortList();
-  const sortListMarkup = sortList.map((item, index) => createSortList(item, index === 0)).join(`\n`);
+  const sortList = SORT_ITEM_NAMES.map((item, index) => createSortList(item, index === 0)).join(`\n`);
 
   return (
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
       <span class="trip-sort__item  trip-sort__item--day">Day</span>
 
-      ${sortListMarkup}
+      ${sortList}
 
       <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
     </form>`
