@@ -50,4 +50,24 @@ export class Sort extends AbstractComponent {
   getSortType() {
     return this._currentSortType;
   }
+
+  setSortTypeChangeHandler(callback) {
+    this.getElement().addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+
+      if (evt.target !== `LABEL`) {
+        return;
+      }
+
+      const sortType = evt.target.dataset.sortType;
+
+      if (this._currentSortType === sortType) {
+        return;
+      }
+
+      this._currentSortType = sortType;
+
+      callback(this._currentSortType);
+    });
+  }
 }
