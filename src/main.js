@@ -5,7 +5,6 @@ import {Sort} from './components/sort.js';
 import {TripInfo} from './components/trip-info.js';
 import {generateNavigationList} from './mock/nav-menu.js';
 import {generateFilter} from './mock/filter.js';
-import {generateSortList} from './mock/sort.js';
 import {generateEventCards} from './mock/event.js';
 import {TripController} from "./controllers/trip";
 
@@ -16,13 +15,12 @@ const tripEvents = document.querySelector(`.trip-events`);
 
 const navList = generateNavigationList();
 const filters = generateFilter();
-const sortList = generateSortList();
 const events = generateEventCards(TRIP_EVENT_COUNT);
 
 renderComponent(tripMain, new TripInfo(events), RenderPosition.AFTERBEGIN);
 renderComponent(tripMainControls, new Navigation(navList));
 renderComponent(tripMainControls, new Filter(filters));
-renderComponent(tripEvents, new Sort(sortList));
+renderComponent(tripEvents, new Sort());
 
 
 const trip = new TripController(tripEvents);
